@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flores Amarillas</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
+      background: #fff8dc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      top: 40%;
+      font-size: 3em;
+      color: #e6b800;
+      text-shadow: 2px 2px 5px rgba(0,0,0,.2);
+      z-index: 10;
+    }
+
+    .flower {
+      position: absolute;
+      top: -50px;
+      font-size: 2em;
+      color: #ffd700;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🌼 Flores Amarillas 🌼</h1>
+
+  <!-- Aquí va tu música -->
+  <audio id="music" autoplay loop>
+    <source src="flores.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.innerHTML = "🌼";
+      flower.style.left = Math.random() * window.innerWidth + "px";
+      flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(flower);
+
+      setTimeout(() => flower.remove(), 8000);
+    }
+
+    setInterval(createFlower, 300);
+  </script>
+</body>
+</html>
